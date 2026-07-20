@@ -75,6 +75,49 @@
   }
   .site-header img{max-height:60px;width:auto;border-radius:0;}
   .site-header .btn{padding:11px 20px;font-size:14px;}
+  .nav-right{display:flex;align-items:center;gap:28px;}
+  .dropdown{position:relative;}
+  .dropdown-toggle{
+    display:flex;align-items:center;gap:6px;
+    background:none;border:none;padding:8px 0;margin:0;
+    font-family:inherit;font-size:15px;font-weight:700;color:var(--ink);
+    cursor:pointer;transition:color .2s ease;
+  }
+  .dropdown-toggle::after{
+    content:"";width:0;height:0;margin-bottom:5px;
+    border-left:5px solid transparent;border-right:5px solid transparent;
+    border-top:5px solid currentColor;
+    transition:transform .2s ease;
+  }
+  .dropdown:hover .dropdown-toggle,
+  .dropdown:focus-within .dropdown-toggle{color:var(--accent);}
+  .dropdown:hover .dropdown-toggle::after,
+  .dropdown:focus-within .dropdown-toggle::after{transform:rotate(180deg);}
+  .dropdown-menu{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,6px);
+    min-width:170px;margin-top:6px;
+    background:#fff;border:1px solid var(--border);border-radius:8px;
+    box-shadow:0 16px 32px rgba(29,32,35,.12);
+    padding:8px;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index:60;
+  }
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu{
+    opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);
+  }
+  .dropdown-menu a{
+    display:block;padding:10px 14px;border-radius:8px;
+    font-size:14px;font-weight:600;color:var(--body);text-decoration:none;
+    white-space:nowrap;transition:background .15s ease, color .15s ease;
+  }
+  .dropdown-menu a:hover,
+  .dropdown-menu a:focus{background:var(--bg-alt);color:var(--accent);}
+  @media (max-width:600px){
+    .nav-right{gap:16px;}
+    .dropdown-toggle{font-size:14px;}
+  }
 
   /* hero */
   .hero .wrap{
@@ -244,7 +287,15 @@
 <header class="site-header">
   <div class="wrap">
     <img src="assets/nerbos.webp" alt="Nerbos">
-    <a class="btn" href="https://tidycal.com/mateochang/nerbos30" target="_blank" rel="noopener">Book My Free Call</a>
+    <div class="nav-right">
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">Products</button>
+        <div class="dropdown-menu">
+          <a href="financial.html">Financial</a>
+        </div>
+      </div>
+      <a class="btn" href="https://tidycal.com/mateochang/nerbos30" target="_blank" rel="noopener">Book My Free Call</a>
+    </div>
   </div>
 </header>
 
